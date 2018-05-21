@@ -5,6 +5,7 @@
   "author": "morion4000",
   "dependencies": {
     "bower": "^1.8.4",
+    "http-server": "^0.11.1",
     "static-server": "^2.2.1"
   }
 }
