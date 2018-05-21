@@ -1,0 +1,10 @@
+{
+  "name": "webdollarminingpool",
+  "version": "0.0.1",
+  "description": "",
+  "author": "morion4000",
+  "dependencies": {
+    "bower": "^1.8.4",
+    "static-server": "^2.2.1"
+  }
+}
