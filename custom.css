@@ -122,3 +122,15 @@ hr {
 .text-muted {
   color: gray !important;
 }
+
+.card-header {
+  background-color: gray;
+}
+
+.card-header button {
+  color: rgb(255, 193, 44);
+}
+
+.card-body {
+  background-color: rgb(27, 27, 27);
+}
