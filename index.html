@@ -15,10 +15,30 @@
 
   <!-- Custom styles for this template -->
   <link href="custom.css" rel="stylesheet">
+
+    <!-- Online Scripts -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js" integrity="sha256-CfcERD4Ov4+lKbWbYqXD6aFM9M51gN4GUEtDhkWABMo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script>
+
+  <!-- Local Scripts -->
+  <script src="jquery.min.js"></script>
+  <script src="main.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120542915-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-120542915-1');
+</script>
 </head>
 
 <body>
-
   <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <a class="navbar-brand" href="#">WebDollar Mining Pool</a>
@@ -28,112 +48,104 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="" id="home">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="#about">About</a>
           </li>
           <li class="nav-item active">
+            <a class="nav-link" href="#prof-calc">Profitability Calculator</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#why_join">Why to Join</a>
+          </li>
+            <li class="nav-item active">
             <a class="nav-link" href="#statistics">Statistics</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#why_join">Why join our pool</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#team">Our Team</a>
+            <a class="nav-link" href="#our_team">Our Team</a>
           </li>
         </ul>
-        <a class="nav-link active" href="#help">Help</a>
-        <!--
-        <form class="form-inline mt-2 mt-md-0">
-          <a class="nav-link active" href="http://calculator.wd.hostero.eu/" target="_blank">Profitability Calculator</a>
-          <a class="nav-link active" href="#">Help</a>
-          <input class="form-control mr-sm-2" type="text" placeholder="Address" aria-label="Search" disabled />
-          <button class="btn btn-outline-warning my-2 my-sm-0 disabled" type="submit">Search</button>
-        </form>
-        -->
+        <ul class="site-x">
+          <li class="nav-item active">
+            <a class="nav-link" id="site1" href="https://webdollar.io/">WebDollar</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" id="site2" href="https://hostero.eu/">Hostero</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" id="site3" href="https://webdollarforum.com/">WebDollar Forum</a>
+          </li>
+        </ul>
+        <a id="help-button">Help</a>
+
+        <div class="help-menu">
+          <ul>
+            <li><a href="privacy.pdf">Privacy policy</a></li>
+            <li><a href="gto.pdf">GTO</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
       </div>
     </nav>
   </header>
-
   <main role="main">
-
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <!--
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-          -->
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="first-slide" src="power.png" alt="First slide" style="opacity: 0.1;">
-          <div class="container">
-            <div class="carousel-caption text-left">
-              <h1>Welcome to WebDollarMiningPool</h1>
-              <h3>The high performance Webdollar Mining Pool. Payouts are instant and you will receive your WEBD as soon as you reach configured payment threshold.</h3>
-              <br />
-              <p><a class="btn btn-lg btn-warning" href="https://docs.google.com/forms/d/1XXdZRk8vfzSqKP8uiMLEU1DXxCneUAVrivAiv027Nu8/" role="button" target="_blank">Pool MEMBERSHIP FORM</a></p>
-            </div>
+    <div class="row" id="top-banner">
+      <div class="col-md-9" id="mcol-1">
+        <div class="col-md-8" style="padding: 0 4%; float: left; text-align: center;">
+          <h1>Welcome to WebDollarMiningPool</h1>
+          <h3>The high performance Webdollar Mining Pool. Payouts are instant and you will receive your WEBD as soon as you reach configured payment threshold.</h3>
+        </div>
+        <div class="col-md-3" style="margin-top: 5% !important; padding: 0; float: left; text-align: center;">
+          <a style=";text-transform: uppercase; font-weight: bold;" class="btn btn-lg btn-warning" href="https://docs.google.com/forms/d/1XXdZRk8vfzSqKP8uiMLEU1DXxCneUAVrivAiv027Nu8/" role="button" target="_blank">Subscribe</a>
+        </div>
+        <div class="clear"></div>
+        <div class="col-md-12" style="padding: 1% 5%;">
+          <div class="words-container animate-down-once">
+            <h2 id="word"></h2>
           </div>
         </div>
-        <!--
-          <div class="carousel-item">
-            <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
-            <div class="container">
-              <div class="carousel-caption">
-                <h1>Another example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
-            <div class="container">
-              <div class="carousel-caption text-right">
-                <h1>One more for good measure.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-              </div>
-            </div>
-          </div>
-                  -->
       </div>
-
-      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+      <div class="col-md-2" style="padding: 0; float: left;">
+        <a  class="twitter-timeline" 
+                  href="https://twitter.com/webdollarchain?ref_src=twsrc%5Etfw" 
+                  data-width="100%"
+                  data-height="350px"
+                  data-theme="dark"
+                  data-chrome="nofooter noborders transparent noscrollbar"
+                  >Tweets by webdollarchain</a> 
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+      <div class="clear"></div>
     </div>
 
+    <div class="row" id="hashing-container">
+        <div class="col-md-9" id="mcol-1">
+          <iframe src="http://hash.wd.hostero.eu/dashboard-solo/db/webdollar-global-hashing-power?panelId=1&orgId=1" width="100%" height="300" frameborder="0"></iframe>
+        </div>
+        <div class="col-md-2" style="padding: 0; float: left;">
+          <iframe src="http://hash.wd.hostero.eu/dashboard-solo/db/webdollar-global-hashing-power?panelId=2&orgId=1" width="100%" height="300" frameborder="0"></iframe>
+        </div>
+        <div class="clear"></div>
+    </div>
 
     <!-- Marketing messaging and featurettes
       ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
     <div class="container marketing">
-
-      <div class="row featurette">
+      <div id="about" class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading" id="why_join">ABOUT <span class="text-muted">WEBDOLLAR</span></h2>
+          <h2 class="featurette-heading">ABOUT <span class="text-muted">WEBDOLLAR</span></h2>
           <p class="lead">Webdollar is the currency of the internet. A Browser-based Peer-to-Peer cryptocurrency that aims to significantly increase the worldwide adoption of decentralized currencies.</p>
         </div>
         <div class="col-md-5">
-          <br /><br /><br /><br /><br /><br />
-          <p>Offering the possibility to send and receive payments online on any Browser, directly from one party to another, without going through a financial institution, while the confirmations of these transactions are secure on the blockchain without
+          <p id="info">Offering the possibility to send and receive payments online on any Browser, directly from one party to another, without going through a financial institution, while the confirmations of these transactions are secure on the blockchain without
             passing them through potential vulnerable channels like a Web Server or RPC intermediary as in BTC.</p>
-          <!--<p>Using your available CPU power, you are performing operations that validate and secure transactions in the WebDollar network based on blockchain technology. This is called mining. It’s simple, profitable
- and secure. Is the easiest and fastest way to earn cryptocurrencies. You don’t need technical knowledge or dedicated hardware resources. WebDollar wants to make mining available for every laptop user, which is why WEBD implemented algorithms that make mining with special hardware (so called GPU farms), unprofitable. Meant to give everyone the opportunity to mine and take part in the new world of cryptocurrency.</p>-->
         </div>
       </div>
 
-      <br /><br /><br />
+      <br><br><br><br><br><br>
 
       <!-- Three columns of text below the carousel -->
       <div class="row">
@@ -143,7 +155,6 @@
           </p>
           <h2>Automatic</h2>
           <p>Short payment interval</p>
-          <p><a class="btn btn-secondary disabled" href="#" role="button">Read more &raquo;</a></p>
         </div>
         <!-- /.col-lg-4 -->
         <div class="col-lg-4">
@@ -152,7 +163,7 @@
           </p>
           <h2>Transparent</h2>
           <p>See how much you gain in real time</p>
-          <p><a class="btn btn-secondary disabled" href="#" role="button">Read more &raquo;</a></p>
+          
         </div>
         <!-- /.col-lg-4 -->
         <div class="col-lg-4">
@@ -161,7 +172,6 @@
           </p>
           <h2>Competitive</h2>
           <p>Fee going down.</p>
-          <p><a class="btn btn-secondary disabled" href="#" role="button">Read more &raquo;</a></p>
         </div>
         <!-- /.col-lg-4 -->
       </div>
@@ -169,30 +179,71 @@
 
       <hr class="featurette-divider">
 
+      <p id="extra"><a class="btn btn-secondary" role="button" id="read-m">Read more &raquo;</a></p>
+
+      <p id="using">Using your available CPU power, you are performing operations that validate and secure transactions in the WebDollar network based on blockchain technology. This is called mining. It’s simple, profitable
+ and secure. Is the easiest and fastest way to earn cryptocurrencies. You don’t need technical knowledge or dedicated hardware resources. WebDollar wants to make mining available for every laptop user, which is why WEBD implemented algorithms that make mining with special hardware (so called GPU farms), unprofitable. Meant to give everyone the opportunity to mine and take part in the new world of cryptocurrency.</p>
+
+         <iframe id="prof-calc" src="http://calculator.wd.hostero.eu/"></iframe>
+
+      <div id="why_join"></div>
       <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading" id="why_join">WHY JOIN <span class="text-muted">OUR POOL</span></h2>
-          <p class="lead">We Care about your gain as much as we do about ours.</p>
+        <div class="col-md-12">
+          <h2 class="featurette-heading" id="">WHY JOIN <span class="text-muted">OUR POOL</span></h2>
         </div>
-        <div class="col-md-5">
-          <br /><br /><br /><br /><br /><br />
-          <ul style="color:rgb(239, 224, 190)">
-            <li>easy way to start mining</li>
-            <li>no software download needed</li>
-            <li>we are working for you</li>
-            <li>just click and let you computer on</li>
-            <li>constant and secure growth while fees goes down</li>
-            <li>We Care about our miners </li>
-          </ul>
+        <div class="col-md-12">
+          <!-- Three columns of text below the carousel -->
+            <div class="row">
+              <!-- /.col-lg-3 -->
+              <div class="col-lg-12"  style="text-align: center; margin: 50px 0;">
+                <p>
+                  <img class="rounded-circle" src="help.svg" alt="Generic placeholder image" width="140" height="140">
+                </p>
+                <p>We care about Your progress as much as we do about ours</p>
+              </div>
+              <br><br>
+              <!-- /.col-lg-3 -->
+              <div class="col-lg-4">
+                <p>
+                  <img class="rounded-circle" src="easy.svg" alt="Generic placeholder image" width="140" height="140">
+                </p>
+                <p>Easy way to start mining</p>
+              </div>
+              <!-- /.col-lg-3 -->
+              <div class="col-lg-4">
+                <p>
+                  <img class="rounded-circle" src="one_click.svg" alt="Generic placeholder image" width="140" height="140">
+                </p>
+                <p>Just click and let your computer on</p>
+              </div>
+              <!-- /.col-lg-3 -->
+              <div class="col-lg-4">
+                <p>
+                  <img class="rounded-circle" src="care.svg" alt="Generic placeholder image" width="140" height="140">
+                </p>
+                <p>We Care about our miners</p>
+              </div>
+            </div>
+            <!-- /.row -->
         </div>
       </div>
 
       <hr class="featurette-divider">
 
+      <p id="extra"><a class="btn btn-secondary" role="button" id="read-m1">Read more &raquo;</a></p>
+
+      <p id="using1">
+        We aim to add value thru the unique site features. This is our professional pride and gratitude for Miners. Doing together a good job really matters to us.<br>
+        No software download needed as we are working for you to offer best productivity. Constant and secure growth, while fee decrease as large number of miners join the pool.<br>
+        MY STORY COULD BE YOUR STORY!<br>
+        Everything started from the question: does it work? Today I can say yes, cryptocurrency exists, although it is a virtual concept. There is nothing virtual in bringing people together to achieve their dreams! Behind the webd are real devices, real persons and real earnings. Be our partner!
+      </p> 
+        
+         <div  id="statistics"></div>
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading" id="statistics">The bigger the crowd, the more frequent the payouts. <span class="text-muted">It'll blow your mind.</span></h2>
-          <p class="lead">We are currently estimated at around 30% of the Global Hashing Power.</p>
+          <h2 class="featurette-heading">The bigger the crowd, the more frequent the payouts. <span class="text-muted">It'll blow your mind.</span></h2>
+          <p class="lead">We are currently estimated at around 15% of the Global Hashing Power.</p>
         </div>
         <div class="col-md-5">
           <br /><br /><br /><br />
@@ -200,16 +251,18 @@
             <canvas id="chart-area"></canvas>
           </div>
         </div>
+   
       </div>
-
-      <hr class="featurette-divider">
-
+        <div class="clear"></div>
+<hr class="featurette-divider">
       <!-- Three columns of text below the carousel -->
-      <div class="row" id="team">
+      
+      <div id="our_team" class="row featurette">
         <div class="col-lg-4 offset-lg-1">
           <center>
+
             <p>
-              <img class="rounded-circle" src="ionut.jpg" alt="Generic placeholder image" width="140" height="140">
+              <img class="rounded-circle" src="ionut.jpg" alt="Founder" width="140" height="140">
             </p>
             <h2>Ionut Moraru</h2>
             <h4>Founder – Technical Development Director</h4>
@@ -219,7 +272,7 @@
         <div class="col-lg-4 offset-lg-2">
           <center>
             <p>
-              <img class="rounded-circle" src="robert.jpg" alt="Generic placeholder image" width="140" height="140">
+              <img class="rounded-circle" src="robert.jpg" alt="Co-Founder" width="140" height="140">
             </p>
             <h2>Robert Dicu</h2>
             <h4>Co-founder – Marketing and Communication</h4>
@@ -231,35 +284,7 @@
 
       <hr class="featurette-divider">
 
-      <!-- Three columns of text below the carousel -->
-      <div class="row" id="help">
-        <div class="col-lg-4">
-          <p>
-            <img src="wd_logo.jpg" alt="Generic placeholder image" width="140" height="140">
-          </p>
-          <h2>WebDollar</h2>
-          <p><a class="btn btn-secondary" href="https://webdollar.io" target="_blank" role="button">Visit site &raquo;</a></p>
-        </div>
-        <!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <p>
-            <img src="hostero_logo_white.png" alt="Generic placeholder image" width="140" height="140">
-          </p>
-          <h2>Hostero</h2>
-          <p><a class="btn btn-secondary" href="https://hostero.eu" role="button" target="_blank">Visit site &raquo;</a></p>
-        </div>
-        <!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <p>
-            <img src="forum_logo.png" alt="Generic placeholder image" width="140" height="140">
-          </p>
-          <h2>WebDollar Forum</h2>
-          <p><a class="btn btn-secondary" href="https://webdollarforum.com" target="_blank" role="button">Visit site &raquo;</a></p>
-        </div>
-        <!-- /.col-lg-4 -->
-      </div>
-
-      <hr class="featurette-divider">
+      <h2 class="faq" id="faq">FAQ</h2>
 
       <div id="accordion">
         <div class="card">
@@ -316,13 +341,20 @@
     <!-- FOOTER -->
     <footer class="footer">
       <div class="container">
-        <p class="float-right"><a href="#">Back to top</a></p>
-        <p class="text-muted">&copy; 2018 WebDollarMiningPool.com. &middot; <a href="privacy.pdf">Privacy</a> &middot; <a href="_gto.pdf">GTO</a></p>
+        <p class="float-right"><a href="#top-banner">Back to top</a></p>
+        <p class="text-muted">&copy; 2018 WebDollarMiningPool.com. &middot; <a href="privacy.pdf">Privacy</a> &middot; <a href="gto.pdf">GTO</a></p>
       </div>
     </footer>
   </main>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+
+</body>
+
+  <!-- Bootstrap core JavaScript
+      ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
   <script>
     $(function() {
       var config = {
@@ -330,12 +362,12 @@
         data: {
           datasets: [{
             data: [
-              500,
-              2200
+              15,
+              85
             ],
             backgroundColor: [
-              'gray',
-              'orange'
+              'orange',
+              'grey'
             ],
             label: 'Dataset 1'
           }],
@@ -346,6 +378,7 @@
         },
         options: {
           responsive: true,
+            cutoutPercentage: 75,
           legend: {
             position: 'top',
           },
@@ -358,6 +391,20 @@
           animation: {
             animateScale: true,
             animateRotate: true
+          },
+          tooltips: {
+            callbacks: {
+              label: function(tooltipItem, data) {
+                var dataset = data.datasets[tooltipItem.datasetIndex];
+                var total = dataset.data.reduce(function(previousValue, currentValue, currentIndex, array) {
+                  return previousValue + currentValue;
+                });
+                var currentValue = dataset.data[tooltipItem.index];
+                var precentage = Math.floor(((currentValue/total) * 100)+0.5);         
+                return precentage + "%";
+                  
+              }
+            }
           }
         }
       };
@@ -366,15 +413,4 @@
       var myPieChart = new Chart(ctx, config);
     });
   </script>
-
-  <!-- Bootstrap core JavaScript
-      ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js" integrity="sha256-CfcERD4Ov4+lKbWbYqXD6aFM9M51gN4GUEtDhkWABMo=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script>
-</body>
-
 </html>

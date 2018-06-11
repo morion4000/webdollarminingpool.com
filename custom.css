@@ -3,8 +3,7 @@
 /* Padding below the footer and lighter body text */
 
 body {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 56px;
   color: #5a5a5a;
   background-color: rgb(27, 27, 27);
 }
@@ -20,33 +19,44 @@ a:hover {
 
 p {
   color:#fff;
+  margin: 0;
+}
+h1 {
+  color: rgb(255, 193, 44);
+}
+
+h2 {
+  color: rgb(239, 224, 190);
+}
+
+h3 {
+  color: rgb(239, 224, 190);
+}
+
+hr {
+  background-color: gray !important;
+}
+
+.text-muted {
+  color: gray !important;
+}
+
+.card-header {
+  background-color: gray;
+}
+
+.card-header button {
+  color: rgb(255, 193, 44);
+  text-decoration: none !important;
+}
+
+.card-body {
+  background-color: rgb(27, 27, 27);
 }
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
-/* Carousel base class */
-.carousel {
-  margin-bottom: 4rem;
-}
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-  bottom: 3rem;
-  z-index: 10;
-}
-
-/* Declare heights because of positioning of img element */
-.carousel-item {
-  height: 32rem;
-  background-color: rgb(27, 27, 27);
-}
-.carousel-item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  height: 32rem;
-}
 
 
 /* MARKETING CONTENT
@@ -80,16 +90,120 @@ p {
   letter-spacing: -.05rem;
 }
 
+.faq {
+  margin-bottom: 50px;
+  font-size: 50px;
+}
+.help-menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  color: #fff;
+  background: #343A40;
+  display: none;
+}
+.help-menu ul {
+  list-style: none;
+  margin: 10px 20px;
+  padding: 0;
+}
+.help-menu ul li a {
+  cursor: pointer;
+  color: #5a5a5a;
+  text-decoration: none;
+}
+.help-menu ul li:hover a {
+  color: #fff;
+}
+#help-button {
+  cursor: pointer;
+  margin-right: 10px;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+#help-button:hover {
+  color: #fff;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+.SandboxRoot.env-bp-min .timeline-Tweet-text {
+  color: #fff;
+}
 
-/* RESPONSIVE CSS
+/*************** ID's *******************/
+
+#info {
+  opacity: 0;
+  margin-top: 7rem;
+}
+#extra {
+  text-align: center;
+  cursor: pointer;
+}
+#using, #using1 {
+  opacity: 0;
+  margin: 3rem 0;         
+}
+#prof-calc {
+  width: 100%;
+  height: 1080px;
+  margin-top: 5rem;
+  border: none;
+}
+#graphs {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  border: none;
+}
+#site1,#site2 {
+  color: #fff !important;
+  text-decoration: none;
+}
+#site3 {
+  color: #fff !important;
+  text-decoration: none;
+}
+.site-x {
+  float: right;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-x li {
+  display: inline-block;
+  float: left;
+}
+
+/******** FOOTER *********/
+
+footer .container {
+  padding: 25px 0;
+}
+p.float-right {
+  display: inline-block;
+}
+p.text-muted {
+  display: inline-block;
+}
+
+/* Media Queries CSS
 -------------------------------------------------- */
 
 @media (min-width: 40em) {
   /* Bump up size of carousel content */
   .carousel-caption p {
-    margin-bottom: 1.25rem;
     font-size: 1.25rem;
     line-height: 1.4;
+    display: inline-block;
+    margin-left: 5rem;
+    margin-top: 4rem;
   }
 
   .featurette-heading {
@@ -102,35 +216,135 @@ p {
     margin-top: 7rem;
   }
 }
-
-h1 {
-  color: rgb(255, 193, 44);
+@media (max-width: 1600px) {
+  h2#word {
+    font-size: 26px;
+  }
+  #top-banner {
+    min-height: 365px !important;
+  }
+  #top-banner #mcol-1 {
+    padding: 2% 0 !important;
+  }
+}
+@media (max-width: 1265px) {
+  .site-x {
+    display: none;
+  }
+  h1 {
+    font-size: 28px;
+  }
+  h3 {
+    font-size: 19px;
+  }
+  h2#word {
+    font-size: 18px;
+  }
+}
+@media (max-width: 1035px) {
+  #mcol-1 {
+    margin: 0 2% 0 2% !important;
+  }
+  .navbar-brand {
+    font-size: 20px;
+  }
+  .nav-link {
+    padding: 5px;
+    font-size: 15px;
+  }
+  .btn-warning {
+    font-size: 15px;
+  }
+}
+@media (max-width: 900px) {
+  .nav-link {
+    padding: 5px;
+    font-size: 13px;
+  }
+  h2#word {
+    font-size: 13px !important;
+  }
+  #top-banner {
+    width: 90% !important;
+  }
+  .btn-warning {
+    font-size: 13px;
+  }
+}
+@media (max-width: 767px) {
+  #hashing-container {
+    width: 90% !important;
+  }
+  #top-banner #mcol-1 {
+    padding: 20% 0 !important; 
+  }
+  h2#word {
+    font-size: 17px !important;
+  }
+}
+@media (max-width: 700px) {
+  h2#word {
+    font-size: 15px !important;
+  }
+}
+@media (max-width: 600px) {
+  h2#word {
+    font-size: 12px !important;
+  }
 }
 
-h2 {
-  color: rgb(239, 224, 190);
+/****** CSS NOU *******/
+
+#top-banner {
+  min-height: 400px; 
+  width: 100%;
+  position: relative;
+  display: block; 
+  margin: 1% auto;
+  padding: 0% 1%;
+}
+#top-banner:after {
+  content: "";
+  background: url("power.png");
+  background-size: cover;
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; 
+}
+#top-banner h4 {
+  color: #fff !important;
+  text-shadow: 1px 1px #000;
+  opacity: 0;
+}
+#hashing-container {
+  width: 100%; 
+  display: block; 
+  margin: 3% auto 9%;
+  padding: 0 1%;
+}
+.words-container {
+  padding: 1% 0;
+}
+#word {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+.clear {
+  clear: both;
+}
+#top-banner #mcol-1 {
+  margin: 0 4%;
+  padding: 3% 0; 
+  float: left;
+}
+#hashing-container #mcol-1 {
+  margin: 0 4%;
+  float: left;
 }
 
-h3 {
-  color: rgb(239, 224, 190);
-}
 
-hr {
-  background-color: gray !important;
-}
-
-.text-muted {
-  color: gray !important;
-}
-
-.card-header {
-  background-color: gray;
-}
-
-.card-header button {
-  color: rgb(255, 193, 44);
-}
-
-.card-body {
-  background-color: rgb(27, 27, 27);
-}
