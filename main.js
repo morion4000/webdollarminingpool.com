@@ -73,7 +73,7 @@ $(document).ready(function(){
 
 	// Cuvintele cu Mesaj //
 
-	if (china === true) {
+	if (window.china) {
 		var mesaje = [
 						 '更像我们更好的为您的钱包！',
 						 '认为聪明 !',
