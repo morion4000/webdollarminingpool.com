@@ -46,7 +46,7 @@ $(document).ready(function(){
 	});
 
 	// Actiune la click pe Help //
-	
+
 	$("#help-button").on('click', function() {
 			if( $(".help-menu").css('display') == 'none') {
 				$('.help-menu').css('display','block');
@@ -73,13 +73,23 @@ $(document).ready(function(){
 
 	// Cuvintele cu Mesaj //
 
-	var mesaje = [
-					 'More Miners better for your wallet!', 
-					 'Think smart!', 
-					 'Let Us do Your job!', 
+	if (china === true) {
+		var mesaje = [
+						 '更像我们更好的为您的钱包！',
+						 '认为聪明 !',
+						 '让我们为你们服务！',
+						 '你所要做的就是验证你的统计数据和钱包余额！',
+						 '让我们一起成长！'
+					 ];
+	} else {
+		var mesaje = [
+					 'More Miners better for your wallet!',
+					 'Think smart!',
+					 'Let Us do Your job!',
 					 'All you have to do is to verify your statistics and wallet balance!',
 					 'Let\'s grow together!'
 				 ];
+	}
 
 
 	var counter = 0;
