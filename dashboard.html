@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="images/favicon.ico">
+
+  <title>WebDollar Mining Pool</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/rowgroup/1.0.4/css/rowGroup.dataTables.min.css">
+
+  <!-- Custom styles for this template -->
+  <link href="css/custom.css" rel="stylesheet">
+
+  <!-- Online Scripts -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js" integrity="sha256-CfcERD4Ov4+lKbWbYqXD6aFM9M51gN4GUEtDhkWABMo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120542915-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-120542915-1');
+  </script>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">WebDollar Mining Pool</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="" id="home">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#prof-calc">Profitability Calculator</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#why_join">Why to Join</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#statistics">Statistics</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#our_team">Our Team</a>
+          </li>
+        </ul>
+        <ul class="site-x">
+          <li class="nav-item active">
+            <a class="nav-link" id="site1" href="https://webdollar.io/">WebDollar</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" id="site2" href="https://hostero.eu/">Hostero</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" id="site3" href="https://webdollarforum.com/">WebDollar Forum</a>
+          </li>
+        </ul>
+        <a id="help-button">Help</a>
+        <a href="index_ch.html">中文</a>
+
+        <div class="help-menu">
+          <ul>
+            <li><a href="documents/privacy.pdf">Privacy policy</a></li>
+            <li><a href="documents/gto.pdf">GTO</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main role="main">
+    <br />
+
+    <div class="container">
+      <table id="miners" class="table">
+        <thead>
+          <tr>
+            <th>Miner</th>
+            <th>Kh/s</th>
+            <th>Activity</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <p class="float-right"><a href="#top-banner">Back to top</a></p>
+        <p class="text-muted">&copy; 2018 WebDollarMiningPool.com. &middot; <a href="documents/privacy.pdf">Privacy</a> &middot; <a href="gto.pdf">GTO</a></p>
+      </div>
+    </footer>
+  </main>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var table = $('#miners').DataTable({
+        rowGroup: {
+          dataSrc: function(row) {
+            return row[0];
+          }
+        }
+      });
+
+      $.getJSON('https://pool.webdollarminingpool.com/pools/miners', function(data) {
+        var miners = data;
+
+        miners.forEach(function(miner) {
+          table.row.add([
+            miner.address,
+            parseInt(miner.hashes / 1000),
+            0, //miner.date_activity
+          ]).draw(false);
+        });
+      });
+    });
+  </script>
+
+</body>
+
+</html>
