@@ -101,19 +101,25 @@
 
     <div class="container">
       <div class="alert alert-primary" role="alert">
-        WMP mining pool URL is: <a href="https://mine.webdollarminingpool.com/pool/1/WMP/0.02/bdda9527a040d9063e22e1dccc4d860b84227ff73232f5c418054112114a6ea4/https:$$pool.webdollarminingpool.com:443" target="_blank">https://mine.webdollarminingpool.com/pool/1/WMP/0.02/bdda9527a040d9063e22e1dccc4d860b84227ff73232f5c418054112114a6ea4/https:$$pool.webdollarminingpool.com:443</a>
+        WMP URL is: <a href="https://mine.webdollarminingpool.com/pool/1/WMP/0.02/bdda9527a040d9063e22e1dccc4d860b84227ff73232f5c418054112114a6ea4/https:$$pool.webdollarminingpool.com:443" target="_blank">https://mine.webdollarminingpool.com/pool/1/WMP/0.02/bdda9527a040d9063e22e1dccc4d860b84227ff73232f5c418054112114a6ea4/https:$$pool.webdollarminingpool.com:443</a>
       </div>
 
       <table id="miners" class="table">
         <thead>
           <tr>
             <th>Miner</th>
-            <th>Mining Power</th>
+            <th>Power (Kh/s)</th>
             <!--<th>Activity</th>-->
           </tr>
         </thead>
         <tbody>
         </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="1" style="text-align:right">Power:</th>
+                <th></th>
+            </tr>
+        </tfoot>
       </table>
     </div>
 
@@ -139,7 +145,8 @@
 
             table.row.add([
               miner.address,
-              '<div class="float-right">' + power + ' Kh/s</div>',
+              //'<div class="float-right">' + power + ' Kh/s</div>',
+              power,
               //miner.date_activity
             ]).draw(false);
           });
@@ -154,7 +161,34 @@
             return row[0];
           }
         },
-        pageLength: 100
+        pageLength: 100,
+        footerCallback: function(row, data, start, end, display) {
+          var api = this.api(),
+            data;
+
+          // Total over all pages
+          total = api
+            .column(1)
+            .data()
+            .reduce(function(a, b) {
+              return parseInt(a) + parseInt(b);
+            }, 0);
+
+          // Total over this page
+          pageTotal = api
+            .column(1, {
+              page: 'current'
+            })
+            .data()
+            .reduce(function(a, b) {
+              return parseInt(a) + parseInt(b);
+            }, 0);
+
+          // Update footer
+          $(api.column(1).footer()).html(
+            pageTotal + ' Kh/s (' + (total / 1000).toFixed(2) + ' Mh/s total)'
+          );
+        }
       });
 
       get_data();
