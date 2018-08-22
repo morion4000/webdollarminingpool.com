@@ -133,7 +133,7 @@
           miners.forEach(function(miner) {
             table.row.add([
               miner.address,
-              parseInt(miner.hashes / 1000),
+              parseInt(miner.hashes / 1000 / 60),
               //miner.date_activity
             ]).draw(false);
           });
