@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="images/favicon.ico">
+
+  <title>WebDollar Mining Pool</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/rowgroup/1.0.4/css/rowGroup.dataTables.min.css">
+
+  <!-- Custom styles for this template -->
+  <link href="css/custom.css" rel="stylesheet">
+
+  <!-- Online Scripts -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120542915-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-120542915-1');
+  </script>
+</head>
+
+<body>
+  <table id="miners" class="table">
+    <thead>
+      <tr>
+        <th>Miner</th>
+        <th>Power (Kh/s)</th>
+        <!--<th>Activity</th>-->
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="1" style="text-align:right">Power:</th>
+            <th></th>
+        </tr>
+    </tfoot>
+  </table>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      function get_data() {
+        table.clear();
+
+        $.getJSON('https://pool.webdollarminingpool.com/pools/miners', function(data) {
+          var miners = data;
+
+          miners.forEach(function(miner) {
+            var power = (miner.hashes / 1000 / 60).toFixed(2);
+
+            table.row.add([
+              miner.address,
+              //'<div class="float-right">' + power + ' Kh/s</div>',
+              power,
+              //miner.date_activity
+            ]).draw(false);
+          });
+
+          //table.draw();
+        });
+      }
+
+      var table = $('#miners').DataTable({
+        rowGroup: {
+          dataSrc: function(row) {
+            return row[0];
+          }
+        },
+        pageLength: 100,
+        footerCallback: function(row, data, start, end, display) {
+          var api = this.api(),
+            data;
+
+          // Total over all pages
+          total = api
+            .column(1)
+            .data()
+            .reduce(function(a, b) {
+              return parseInt(a) + parseInt(b);
+            }, 0);
+
+          // Total over this page
+          pageTotal = api
+            .column(1, {
+              page: 'current'
+            })
+            .data()
+            .reduce(function(a, b) {
+              return parseInt(a) + parseInt(b);
+            }, 0);
+
+          // Update footer
+          $(api.column(1).footer()).html(
+            pageTotal + ' Kh/s (' + (total / 1000).toFixed(2) + ' Mh/s total)'
+          );
+        }
+      });
+
+      get_data();
+
+      setInterval(get_data, 60 * 1000);
+    });
+  </script>
+
+</body>
+
+</html>
