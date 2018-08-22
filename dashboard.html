@@ -105,7 +105,7 @@
           <tr>
             <th>Miner</th>
             <th>Kh/s</th>
-            <th>Activity</th>
+            <!--<th>Activity</th>-->
           </tr>
         </thead>
         <tbody>
@@ -124,6 +124,24 @@
 
   <script type="text/javascript">
     $(document).ready(function() {
+      function get_data() {
+        table.clear();
+
+        $.getJSON('https://pool.webdollarminingpool.com/pools/miners', function(data) {
+          var miners = data;
+
+          miners.forEach(function(miner) {
+            table.row.add([
+              miner.address,
+              parseInt(miner.hashes / 1000),
+              //miner.date_activity
+            ]).draw(false);
+          });
+
+          table.draw();
+        });
+      }
+
       var table = $('#miners').DataTable({
         rowGroup: {
           dataSrc: function(row) {
@@ -132,17 +150,9 @@
         }
       });
 
-      $.getJSON('https://pool.webdollarminingpool.com/pools/miners', function(data) {
-        var miners = data;
+      get_data();
 
-        miners.forEach(function(miner) {
-          table.row.add([
-            miner.address,
-            parseInt(miner.hashes / 1000),
-            0, //miner.date_activity
-          ]).draw(false);
-        });
-      });
+      setInterval(get_data, 5000);
     });
   </script>
 
