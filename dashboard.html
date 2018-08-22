@@ -46,29 +46,29 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">WebDollar Mining Pool</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="index.html#">WebDollar Mining Pool</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="index.html#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="" id="home">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="index.html" id="home">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#about">About</a>
+            <a class="nav-link" href="index.html#about">About</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#prof-calc">Profitability Calculator</a>
+            <a class="nav-link" href="index.html#prof-calc">Profitability Calculator</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#why_join">Why to Join</a>
+            <a class="nav-link" href="index.html#why_join">Why to Join</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#statistics">Statistics</a>
+            <a class="nav-link" href="index.html#statistics">Statistics</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#our_team">Our Team</a>
+            <a class="nav-link" href="index.html#our_team">Our Team</a>
           </li>
         </ul>
         <ul class="site-x">
@@ -89,7 +89,7 @@
           <ul>
             <li><a href="documents/privacy.pdf">Privacy policy</a></li>
             <li><a href="documents/gto.pdf">GTO</a></li>
-            <li><a href="#faq">FAQ</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
           </ul>
         </div>
       </div>
@@ -100,11 +100,15 @@
     <br />
 
     <div class="container">
+      <div class="alert alert-primary" role="alert">
+        WMP mining pool URL is: <a href="https://mine.webdollarminingpool.com/pool/1/WMP/0.02/bdda9527a040d9063e22e1dccc4d860b84227ff73232f5c418054112114a6ea4/https:$$pool.webdollarminingpool.com:443" target="_blank">https://mine.webdollarminingpool.com/pool/1/WMP/0.02/bdda9527a040d9063e22e1dccc4d860b84227ff73232f5c418054112114a6ea4/https:$$pool.webdollarminingpool.com:443</a>
+      </div>
+
       <table id="miners" class="table">
         <thead>
           <tr>
             <th>Miner</th>
-            <th>Kh/s</th>
+            <th>Mining Power</th>
             <!--<th>Activity</th>-->
           </tr>
         </thead>
@@ -116,7 +120,7 @@
     <!-- FOOTER -->
     <footer class="footer">
       <div class="container">
-        <p class="float-right"><a href="#top-banner">Back to top</a></p>
+        <p class="float-right"><a href="index.html#top-banner">Back to top</a></p>
         <p class="text-muted">&copy; 2018 WebDollarMiningPool.com. &middot; <a href="documents/privacy.pdf">Privacy</a> &middot; <a href="gto.pdf">GTO</a></p>
       </div>
     </footer>
@@ -131,14 +135,16 @@
           var miners = data;
 
           miners.forEach(function(miner) {
+            var power = (miner.hashes / 1000 / 60).toFixed(2);
+
             table.row.add([
               miner.address,
-              parseInt(miner.hashes / 1000 / 60),
+              '<div class="float-right">' + power + ' Kh/s</div>',
               //miner.date_activity
             ]).draw(false);
           });
 
-          table.draw();
+          //table.draw();
         });
       }
 
@@ -147,12 +153,13 @@
           dataSrc: function(row) {
             return row[0];
           }
-        }
+        },
+        pageLength: 100
       });
 
       get_data();
 
-      setInterval(get_data, 5000);
+      //setInterval(get_data, 10000);
     });
   </script>
 
