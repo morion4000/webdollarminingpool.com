@@ -304,7 +304,7 @@ p.text-muted {
 }
 #top-banner:after {
   content: "";
-  background: url("power.png");
+  background: url("/images/power.png");
   background-size: cover;
   opacity: 0.1;
   top: 0;

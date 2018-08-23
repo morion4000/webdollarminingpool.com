@@ -148,7 +148,7 @@ hr {
 }
 #using, #using1 {
   opacity: 0;
-  margin: 3rem 0;         
+  margin: 3rem 0;
 }
 #prof-calc {
   width: 100%;
@@ -276,7 +276,7 @@ p.text-muted {
     width: 90% !important;
   }
   #top-banner #mcol-1 {
-    padding: 20% 0 !important; 
+    padding: 20% 0 !important;
   }
   h2#word {
     font-size: 17px !important;
@@ -296,16 +296,16 @@ p.text-muted {
 /****** CSS NOU *******/
 
 #top-banner {
-  min-height: 400px; 
+  min-height: 400px;
   width: 100%;
   position: relative;
-  display: block; 
+  display: block;
   margin: 1% auto;
   padding: 0% 1%;
 }
 #top-banner:after {
   content: "";
-  background: url("power.png");
+  background: url("/images/power.png");
   background-size: cover;
   opacity: 0.1;
   top: 0;
@@ -313,7 +313,7 @@ p.text-muted {
   bottom: 0;
   right: 0;
   position: absolute;
-  z-index: -1; 
+  z-index: -1;
 }
 #top-banner h4 {
   color: #fff !important;
@@ -321,8 +321,8 @@ p.text-muted {
   opacity: 0;
 }
 #hashing-container {
-  width: 100%; 
-  display: block; 
+  width: 100%;
+  display: block;
   margin: 3% auto 9%;
   padding: 0 1%;
 }
@@ -339,12 +339,10 @@ p.text-muted {
 }
 #top-banner #mcol-1 {
   margin: 0 4%;
-  padding: 3% 0; 
+  padding: 3% 0;
   float: left;
 }
 #hashing-container #mcol-1 {
   margin: 0 4%;
   float: left;
 }
-
-
