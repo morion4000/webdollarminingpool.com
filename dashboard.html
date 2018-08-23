@@ -109,14 +109,14 @@
           <tr>
             <th>Miner</th>
             <th>Power (Kh/s)</th>
-            <!--<th>Activity</th>-->
+            <th>Last Activity (GMT)</th>
           </tr>
         </thead>
         <tbody>
         </tbody>
         <tfoot>
             <tr>
-                <th colspan="1" style="text-align:right">Power:</th>
+                <th colspan="2" style="text-align:right">Power:</th>
                 <th></th>
             </tr>
         </tfoot>
@@ -141,13 +141,13 @@
           var miners = data;
 
           miners.forEach(function(miner) {
-            var power = (miner.hashes / 1000 / 60).toFixed(2);
+            var power = (miner.hashes_alt / 1000).toFixed(2);
 
             table.row.add([
               miner.address,
               //'<div class="float-right">' + power + ' Kh/s</div>',
               power,
-              //miner.date_activity
+              new Date(miner.date_activity * 1e3).toISOString()
             ]).draw(false);
           });
 
