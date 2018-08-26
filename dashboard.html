@@ -109,7 +109,7 @@
           <tr>
             <th>Miner</th>
             <th>Power (Kh/s)</th>
-            <th>Last Activity (GMT)</th>
+            <th>Last Updated</th>
           </tr>
         </thead>
         <tbody>
@@ -139,15 +139,19 @@
 
         $.getJSON('https://pool.webdollarminingpool.com/pools/miners', function(data) {
           var miners = data;
+          var now = new Date().getTime();
 
           miners.forEach(function(miner) {
             var power = (miner.hashes_alt / 1000).toFixed(2);
+            var parsed_address = encodeURIComponent(miner.address);
+            var url = 'https://charts.webdollarminingpool.com/render/dashboard-solo/db/wmp-miner-hash?orgId=1&var-address=' + parsed_address + '&panelId=1&from=now-24h&to=' + now + '&width=1000&height=500&tz=UTC%2B03%3A00';
+            var seconds_ago = parseInt((Date.now() - new Date(miner.date_activity * 1e3)) / 1000);
 
             table.row.add([
-              miner.address,
+              '<a href="'+url+'" target="_blank">'+miner.address+'</a>',
               //'<div class="float-right">' + power + ' Kh/s</div>',
               power,
-              new Date(miner.date_activity * 1e3).toISOString()
+              seconds_ago + ' sec ago'
             ]).draw(false);
           });
 
