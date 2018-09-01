@@ -109,16 +109,18 @@
           <tr>
             <th>Miner</th>
             <th>Power (Kh/s)</th>
+            <th>Reward (WEBD)</th>
+            <th>Workers</th>
             <th>Last Updated</th>
           </tr>
         </thead>
         <tbody>
         </tbody>
         <tfoot>
-            <tr>
-                <th colspan="2" style="text-align:right">Power:</th>
-                <th></th>
-            </tr>
+          <tr>
+            <th colspan="4" style="text-align:right">Power:</th>
+            <th></th>
+          </tr>
         </tfoot>
       </table>
     </div>
@@ -140,17 +142,42 @@
         $.getJSON('https://pool.webdollarminingpool.com/pools/miners', function(data) {
           var miners = data;
           var now = new Date().getTime();
+          var result = {};
 
           miners.forEach(function(miner) {
+            var address = miner.address;
+
+            if (!result[address]) {
+              result[address] = {
+                hashes_alt: 0,
+                reward_confirmed: 0,
+                workers: 0
+              };
+            }
+
+            result[address].hashes_alt += miner.hashes_alt;
+            result[address].reward_confirmed = miner.reward_confirmed;
+            result[address].address = miner.address;
+            result[address].date_activity = miner.date_activity;
+            result[address].workers++;
+          });
+
+          console.log(result);
+
+          Object.keys(result).forEach(function(key, index) {
+            var miner = result[key];
             var power = (miner.hashes_alt / 1000).toFixed(2);
+            var reward_confirmed = (miner.reward_confirmed / 10000).toFixed(0);
             var parsed_address = encodeURIComponent(miner.address);
             var url = 'https://charts.webdollarminingpool.com/render/dashboard-solo/db/wmp-miner-hash?orgId=1&var-address=' + parsed_address + '&panelId=1&from=now-24h&to=' + now + '&width=1000&height=500&tz=UTC%2B03%3A00';
             var seconds_ago = parseInt((Date.now() - new Date(miner.date_activity * 1e3)) / 1000);
 
             table.row.add([
-              '<a href="'+url+'" target="_blank">'+miner.address+'</a>',
+              '<a href="' + url + '" target="_blank">' + miner.address + '</a>',
               //'<div class="float-right">' + power + ' Kh/s</div>',
               power,
+              reward_confirmed,
+              miner.workers,
               seconds_ago + ' sec ago'
             ]).draw(false);
           });
@@ -160,11 +187,6 @@
       }
 
       var table = $('#miners').DataTable({
-        rowGroup: {
-          dataSrc: function(row) {
-            return row[0];
-          }
-        },
         pageLength: 100,
         footerCallback: function(row, data, start, end, display) {
           var api = this.api(),
